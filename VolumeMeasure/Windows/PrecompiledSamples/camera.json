@@ -1,0 +1,40 @@
+{
+    "Control": {
+        "ColorResolution": "640*480",
+        "FrameRate": 30,
+        "IRGmmCorrectionEnabled": false,
+        "IRGmmCorrectionThreshold": 50,
+        "IRGmmGain": 50,
+        "WorkMode": "ActiveMode"
+    },
+    "ExposureTime": {
+        "Color_ExposureMode": "Auto",
+        "Color_ExposureTime": 32000,
+        "HDR_Mode": false,
+        "ToF_ExposureMode": "Manual",
+        "ToF_ExposureTime": 5000,
+        "WDR_Mode": false
+    },
+    "Filter": {
+        "ConfidenceFilter": true,
+        "ConfidenceFilter_Threshold": 15,
+        "Fillhole": false,
+        "FlyingPixelFilter": true,
+        "FlyingPixelFilter_Threshold": 8,
+        "SpatialFilter": false,
+        "TimeFilter": true,
+        "TimeFilter_Threshold": 3
+    },
+    "MorphAI": {
+        "AIModuleMode": "ContinuousRunMode",
+        "Enable": 0,
+        "InputFrameType": [
+            "Depth",
+            "Color"
+        ],
+        "PreviewFrameType": [
+            "Depth",
+            "Color"
+        ]
+    }
+}
