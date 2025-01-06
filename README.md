@@ -24,4 +24,4 @@
 
 ### Resources
 
-- Download links: https://github.com/ScepterAlgorithmLib
+- Download links: https://github.com/ScepterSW/ScepterAlgorithmLib
