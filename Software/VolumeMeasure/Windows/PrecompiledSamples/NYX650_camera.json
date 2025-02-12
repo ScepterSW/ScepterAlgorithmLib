@@ -1,0 +1,34 @@
+{
+    "Control": {
+        "ColorResolution": "640*480",
+        "FrameRate": 30,
+        "IRGmmCorrectionEnabled": false,
+        "IRGmmCorrectionThreshold": 50,
+        "IRGmmGain": 25,
+        "WorkMode": "ActiveMode"
+    },
+    "ExposureTime": {
+        "Color_ExposureMode": "Auto",
+        "Color_ExposureTime": 32000,
+        "HDR_Mode": false,
+        "ToF_ExposureMode": "Manual",
+        "ToF_ExposureTime": 5000,
+        "WDR_Mode": false
+    },
+    "Filter": {
+        "ConfidenceFilter": true,
+        "ConfidenceFilter_Threshold": 15,
+        "Fillhole": false,
+        "Fillhole_ValidCount": 3,
+        "Fillhole_Threshold": 5,
+        "Fillhole_DoCount": 1,
+        "FlyingPixelFilter": true,
+        "FlyingPixelFilter_Threshold": 8,
+        "SpatialFilter": true,
+        "SpatialFilter_ValidCount": 7,
+        "SpatialFilter_Threshold": 50,
+        "SpatialFilter_DoCount": 1,
+        "TimeFilter": true,
+        "TimeFilter_Threshold": 3
+    }
+}

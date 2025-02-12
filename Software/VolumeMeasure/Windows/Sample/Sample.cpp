@@ -18,7 +18,7 @@ int32_t main(int32_t argc, char *argv[])
     ScStatus status = scInitialize();
     if (status != ScStatus::SC_OK)
     {
-        printf("scInitialize failed!\n");
+        printf("scInitialize has failed:%d!\n", status);
         system("pause");
         return -1;
     }
@@ -39,7 +39,7 @@ OPEN:
     bool isRunning = false;
     if (AlgStatus::ALG_OK != result)
     {
-        printf("scInitialize failed! result:%d.\n", result);
+        printf("scInitialize has failed:%d.\n", result);
         system("pause");
         return -1;
     }
@@ -86,7 +86,7 @@ OPEN:
         {
             isSavingImg = !isSavingImg;
             algSetSaveOfflineDataState(algHandle, isSavingImg);
-            printf("%s saved offline data.\n", ((true == isSavingImg) ? "start" : "stop"));
+            printf("%s saving offline data.\n", ((true == isSavingImg) ? "start" : "stop"));
         }
         break;
         case 'B':
@@ -104,15 +104,15 @@ OPEN:
                                       switch (calibrationState)
                                       {
                                       case 0:
-                                          printf("The calibration success.\n");
+                                          printf("The calibration is successful.\n");
                                           isDone = true;
                                           break;
                                       case 2:
-                                          printf("The calibration is in process.\n");
+                                          printf("The calibration is in progress.\n");
                                           isDone = false;
                                           break;
                                       default:
-                                          printf("The calibration fail.\n");
+                                          printf("The calibration has failed:%d.\n", calibrationState);
                                           isDone = true;
                                           break;
                                       }
@@ -155,7 +155,8 @@ void ShowMenu(void)
     printf("Press following key to set corresponding feature:\n");
     printf("T/t: Trigger a volume measurement.\n");
     printf("B/b: Recalibrate the background.\n");
-    printf("M/m: Show menu.\n");
+    printf("R/r: Start or stop saving offline data.\n");
+    printf("M/m: Show the menu.\n");
     return;
 }
 
@@ -202,7 +203,7 @@ void ShowInfo(const ScDeviceHandle &deviceHandle, const AlgResult &algResult, bo
     {
         cv::Mat img = cv::Mat(algResult.frame.height, algResult.frame.width, CV_8UC3, algResult.frame.pFrameData);
 
-        // show hints
+        // show hint
         {
             std::sprintf(temp, "Please align the center of the object with the mark point.");
             cv::putText(img, temp, Point(0, 20), cv::FONT_HERSHEY_SIMPLEX, 0.6, Scalar(0, 255, 255), 1, 6);
@@ -237,10 +238,10 @@ void ShowInfo(const ScDeviceHandle &deviceHandle, const AlgResult &algResult, bo
             }
 
 
-            Point points[4] = { Point(algResult.result.Point0.x, algResult.result.Point0.y)
-                               ,Point(algResult.result.Point1.x, algResult.result.Point1.y)
-                               ,Point(algResult.result.Point2.x, algResult.result.Point2.y)
-                               ,Point(algResult.result.Point3.x, algResult.result.Point3.y) };
+            Point points[4] = { Point(algResult.result.point0.x, algResult.result.point0.y)
+                               ,Point(algResult.result.point1.x, algResult.result.point1.y)
+                               ,Point(algResult.result.point2.x, algResult.result.point2.y)
+                               ,Point(algResult.result.point3.x, algResult.result.point3.y) };
 
             cv::line(img, points[0], points[1], resultColor, 2);
             cv::line(img, points[1], points[2], resultColor, 2);

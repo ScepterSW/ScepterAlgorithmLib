@@ -19,17 +19,21 @@
 
 typedef enum
 {
- 	AI_CONTINUOUS_RUN_MODE = 0x00,   //!< Enter the continuous mode.
-	AI_SINGLE_RUN_MODE = 0x01,      //!< Enter the single run mode, at this time need to invoke scAIModuleTriggerOnce, to trigger the algo result.
+    AI_CONTINUOUS_RUN_MODE = 0x00,   //!< Enter the continuous mode.
+    AI_SINGLE_RUN_MODE     = 0x01,   //!< Enter the single run mode, at this time need to invoke scAIModuleTriggerOnce, to trigger the algo result.
 } ScAIModuleMode;
+
+#pragma pack(push, 1)
 
 typedef struct
 {
-	uint32_t      resultIndex;        //!< The index of the AI result.
-	uint8_t*      pResultData;        //!< A buffer containing the AI result's data.
-	uint32_t      dataLen;            //!< The length of AI result, in bytes.
-	uint64_t      resultTimestamp;    //!< The timestamp(in milliseconds) when the AI result be generated on the device AI mode.
+    uint32_t resultIndex;       //!< The index of the AI result.
+    uint8_t* pResultData;       //!< A buffer containing the AI result's data.
+    uint32_t dataLen;           //!< The length of AI result, in bytes.
+    uint64_t resultTimestamp;   //!< The timestamp(in milliseconds) when the AI result be generated on the device AI mode.
 } ScAIResult;
+
+#pragma pack(pop)
 
 /**
  * @brief        Set the AI module start or stop working.
@@ -52,10 +56,9 @@ SCEPTER_C_API_EXPORT ScStatus scAIModuleGetEnabled(ScDeviceHandle device, bool* 
  * @param[in]    device          The handle of the device from which to set the param value.
  * @param[in]    paramID         The ID of the parameter.
  * @param[in]    pBuffer         Pointer to a buffer containing the property value.
- * @param[in]    bufferSize      The size, in bytes, of the parameter value contained in pBuffer.
+ * @param[in]    bufferSize      The size, in bytes, of the parameter value contained in pBuffer. The max size is 65535.
  * @return       ::SC_OK         If the function succeeded, or one of the error values defined by ::ScStatus.
  */
-
 SCEPTER_C_API_EXPORT ScStatus scAIModuleSetParam(ScDeviceHandle device, uint32_t paramID, void* pBuffer, uint16_t bufferSize);
 
 /**
@@ -63,10 +66,10 @@ SCEPTER_C_API_EXPORT ScStatus scAIModuleSetParam(ScDeviceHandle device, uint32_t
  * @param[in]    device          The handle of the device from which to get the param value.
  * @param[in]    paramID         The ID of the parameter.
  * @param[out]   pBuffer         Pointer to a buffer containing the property value.
- * @param[out]   pBufferSize     The size, in bytes, of the buffer.
+ * @param[out]   pBufferSize     The size, in bytes, of the buffer.The max size is 65535.
  * @return       ::SC_OK         If the function succeeded, or one of the error values defined by ::ScStatus.
  */
-SCEPTER_C_API_EXPORT ScStatus scAIModuleGetParam(ScDeviceHandle device, uint32_t paramID, void** pBuffer, uint16_t *pBufferSize);
+SCEPTER_C_API_EXPORT ScStatus scAIModuleGetParam(ScDeviceHandle device, uint32_t paramID, void** pBuffer, uint16_t* pBufferSize);
 
 /**
  * @brief        Set the working mode of the AI module.
@@ -85,7 +88,7 @@ SCEPTER_C_API_EXPORT ScStatus scAIModuleSetWorkMode(ScDeviceHandle device, ScAIM
 SCEPTER_C_API_EXPORT ScStatus scAIModuleGetWorkMode(ScDeviceHandle device, ScAIModuleMode* mode);
 
 /**
- * @brief        Do trigger once if the AI module is in AI_TRIGGER_MODE.
+ * @brief        Do trigger once if the AI module is in AI_SINGLE_RUN_MODE.
  * @param[in]    device      The handle of the device.
  * @return       ::SC_OK     If the function succeeded, or one of the error values defined by ::ScStatus.
  */

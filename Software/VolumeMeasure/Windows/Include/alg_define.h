@@ -159,10 +159,10 @@ typedef struct
     uint32_t width;  // the width of the object: unit is mm
     uint32_t height; // the height of the object: unit is mm
     ShapeType type;  // the object type: 0 - cube; 1 - irregular
-    MarkPoint Point0;
-    MarkPoint Point1;
-    MarkPoint Point2;
-    MarkPoint Point3;
+    MarkPoint point0;
+    MarkPoint point1;
+    MarkPoint point2;
+    MarkPoint point3;
 } VolResult;
 
 typedef struct
