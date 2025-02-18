@@ -1,6 +1,6 @@
 ## Volume Measurement Algorithm
 
-Supports the volume measurement of a single cube object placed on a test plane.
+The algorithm supports measuring the length, width, and height of cartons on a test plane.
 
 ### Supported Devices
 
@@ -52,3 +52,7 @@ Supports the volume measurement of a single cube object placed on a test plane.
 1. Press the R/r button to enable the offline save function;
 2. Press the T/t button to measure;
 3. Find the RECYYYYMMDD_HHMMSS_MS (e.g. REC20250212_145340_790) folder in the current directory and send us the entire folder.
+
+### Resources
+
+- [measurement data](./Measurement data.md)

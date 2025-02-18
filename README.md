@@ -1,27 +1,16 @@
 ## Scepter Algorithm Library
 
-### Supported Devices
+This repository stores various algorithm libraries released by Vzense, including dynamic library files, header files, sample codes, precompiled tools, test data, and more.
 
-- NYX Camera
+### Directory Structure
 
-  - NYX650 (NYX650_R_20240325_B02  and later )
+- **[AI-Camera](AI-Camera/README.md):** Stores algorithm libraries based on MorphAISDK.
 
-### Supported Platform
+- **[Software](Software/README.md):** Stores algorithm libraries based on ScepterSDK/BaseSDK.
 
-- Windows 10/11
+### Resources:
 
-### Folder description
-- **Windows** 
+- MorphAISDK: https://github.com/ScepterSW/MorphAISDK
 
-    - The Windows folder is used for Windows platform software development and contains the header files and library files,  that is developed for personal computer platform(x64), use standard compiler VS2019
-    - The Windows folder also has some samples that show the sequence of API calls and how to use them
 
-### Summary Of The Guidelines
-
-- Choose the right version for different device types
-
-- Refer to samples and documents for functional development
-
-### Resources
-
-- Download links: https://github.com/ScepterSW/ScepterAlgorithmLib
+- ScepterSDK: https://github.com/ScepterSW/ScepterSDK/BaseSDK
