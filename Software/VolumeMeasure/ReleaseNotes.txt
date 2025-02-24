@@ -1,2 +1,5 @@
+Ver25.2.2
+1.improve the stability of computations
+
 Ver25.2.1
 1.improve the stability of computations

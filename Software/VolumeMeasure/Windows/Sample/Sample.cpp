@@ -10,8 +10,9 @@ using cv::Size;
 
 void ShowMenu(void);
 bool InitDevice(ScDeviceHandle &deviceHandle, ScDeviceInfo& deviceInfo);
-void ShowInfo(const ScDeviceHandle &deviceHandle, const AlgResult &algResult, bool isSavingImg);
+void ShowInfo(const ScDeviceHandle &deviceHandle, const AlgResult &algResult, Point& markerPosition, bool isSavingImg);
 AlgStatus GetCalibrationState(const AlgVolMeasureHandle &algHandle, uint8_t &state);
+AlgStatus GetMarkerPosition(const AlgVolMeasureHandle& algHandle, Point& markerPosition);
 
 int32_t main(int32_t argc, char *argv[])
 {
@@ -49,7 +50,8 @@ OPEN:
     }
 
     ShowMenu();
-
+    Point datumPoint(320, 240);
+    GetMarkerPosition(algHandle, datumPoint);
     VolResult lastVolResult = { 0 };
     bool isSavingImg = false;
     while (isRunning)
@@ -59,13 +61,13 @@ OPEN:
         result = algGetResult(algHandle, &algResult);
         if (AlgStatus::ALG_OK == result)
         {
-            ShowInfo(deviceHandle, algResult, isSavingImg);
+            ShowInfo(deviceHandle, algResult, datumPoint, isSavingImg);
             lastVolResult = algResult.result;
         }
         else if (AlgStatus::ALG_UNMEASURED == result)
         {
             algResult.result = lastVolResult;
-            ShowInfo(deviceHandle, algResult, isSavingImg);
+            ShowInfo(deviceHandle, algResult, datumPoint, isSavingImg);
         }
         else 
         {
@@ -106,6 +108,7 @@ OPEN:
                                       case 0:
                                           printf("The calibration is successful.\n");
                                           isDone = true;
+                                          GetMarkerPosition(algHandle, datumPoint);
                                           break;
                                       case 2:
                                           printf("The calibration is in progress.\n");
@@ -194,7 +197,7 @@ bool InitDevice(ScDeviceHandle &deviceHandle, ScDeviceInfo& deviceInfo)
     return true;
 }
 
-void ShowInfo(const ScDeviceHandle &deviceHandle, const AlgResult &algResult, bool isSavingImg)
+void ShowInfo(const ScDeviceHandle &deviceHandle, const AlgResult &algResult, Point& markerPosition, bool isSavingImg)
 {
     static const uint32_t BUFLEN = 100;
     char temp[BUFLEN] = {0};
@@ -207,7 +210,7 @@ void ShowInfo(const ScDeviceHandle &deviceHandle, const AlgResult &algResult, bo
         {
             std::sprintf(temp, "Please align the center of the object with the mark point.");
             cv::putText(img, temp, Point(0, 20), cv::FONT_HERSHEY_SIMPLEX, 0.6, Scalar(0, 255, 255), 1, 6);
-            cv::drawMarker(img, Point(algResult.frame.width / 2, algResult.frame.height /2), Scalar(0, 255, 255), cv::MARKER_CROSS, 20, 2);
+            cv::drawMarker(img, markerPosition, Scalar(0, 255, 255), cv::MARKER_CROSS, 20, 2);
         }
 
         if (true == isSavingImg)
@@ -265,6 +268,21 @@ AlgStatus GetCalibrationState(const AlgVolMeasureHandle &algHandle, uint8_t &sta
     uint16_t len = 0;
     const uint8_t *pCalibrationState = nullptr;
     AlgStatus ret = algGetParam(algHandle, PARAM_BG_CALIBRATION_STATE, (const char **)&pCalibrationState, &len);
-    state = *pCalibrationState;
+    if (AlgStatus::ALG_OK == ret)
+    {
+        state = *pCalibrationState;
+    }
+    return ret;
+}
+
+AlgStatus GetMarkerPosition(const AlgVolMeasureHandle& algHandle, Point& markerPosition)
+{
+    uint16_t len = 0;
+    const Point* pPoint = nullptr;
+    AlgStatus ret = algGetParam(algHandle, PARAM_MEASUREMENT_DATUM_POINT, (const char**)&pPoint, &len);
+    if (AlgStatus::ALG_OK == ret)
+    {
+        markerPosition = *pPoint;
+    }
     return ret;
 }

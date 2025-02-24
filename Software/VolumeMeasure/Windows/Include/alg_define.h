@@ -96,6 +96,7 @@ typedef enum ParamID
     PARAM_LINE_MEAN_DISTANCE_THRESHOLD = 0x10, //
     PARAM_CUBE_JUDGE_ANGLE = 0x11,             //
     PARAM_IRREGULAR_HEIGHT_MEAN_COUNT = 0x12,  //
+    PARAM_MEASUREMENT_DATUM_POINT = 0x13,      //The Measuring datum point
 
     PARAM_BG_CALIBRATION_START = 0x30, // Start background calibration
     PARAM_BG_CALIBRATION_STATE = 0x31, // The state of background calibration

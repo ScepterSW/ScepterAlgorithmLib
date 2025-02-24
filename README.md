@@ -1,16 +1,27 @@
 ## Scepter Algorithm Library
 
-This repository stores various algorithm libraries released by Vzense, including dynamic library files, header files, sample codes, precompiled tools, test data, and more.
+[中文](README.zh-CN.md)
 
-### Directory Structure
+This repository systematically integrates core algorithm suites developed by Vzense for industrial vision, intelligent security, warehousing logistics, and other scenarios. Each algorithm module provides comprehensive development resources, including:
 
-- **[AI-Camera](AI-Camera/README.md):** Stores algorithm libraries based on MorphAISDK.
+- Cross-platform dynamic link libraries (supporting Windows/Linux/AArch64 architectures)
 
-- **[Software](Software/README.md):** Stores algorithm libraries based on ScepterSDK/BaseSDK.
+- Standard C/C++ header file interfaces
+
+- Out-of-the-box sample projects
+
+- Multi-scenario test datasets
+
+- Detailed API reference documentation
+
+Developers can rapidly integrate required algorithms based on business needs and achieve efficient secondary development through our provided algorithm interfaces, significantly shortening the implementation cycle from prototype validation to mass production deployment.
+
+### Repository Structure
+
+- **[AI-Camera](AI-Camera/README.md):** Edge computing version of algorithms, developed based on [MorphAISDK](https://github.com/ScepterSW/MorphAISDK) and deployed on cameras.
+
+- **[Software](Software/README.md):** Computer version of algorithms, developed based on [ScepterSDK](https://github.com/ScepterSW/ScepterSDK) and deployed on host computers (supports Windows/Linux/AArch64).
 
 ### Resources:
 
-- MorphAISDK: https://github.com/ScepterSW/MorphAISDK
-
-
-- ScepterSDK: https://github.com/ScepterSW/ScepterSDK/BaseSDK
+- Official Website: https://industry.goermicro.com
