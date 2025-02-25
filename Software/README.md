@@ -39,4 +39,4 @@ Module Functions:
 
 | Name                                                        | Description                                                  |
 | ----------------------------------------------------------- | ------------------------------------------------------------ |
-| [3D Volume Measurement Algorithm](VolumeMeasure/Readme.md)) | <img src="VolumeMeasure/assets/sample.png" alt="volumeMeasure" style="zoom:60%;" /><br>Measures the length, width, and height of cartons. |
+| [3D Volume Measurement Algorithm](VolumeMeasure/README.md) | <img src="VolumeMeasure/assets/sample.png" alt="volumeMeasure" style="zoom:60%;" /><br>Measures the length, width, and height of cartons. |
