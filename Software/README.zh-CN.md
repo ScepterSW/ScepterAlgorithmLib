@@ -38,4 +38,4 @@
 
 | 名称                                              | 描述                                                         |
 | ------------------------------------------------- | ------------------------------------------------------------ |
-| [三维体积测量算法](VolumeMeasure/Readme.zh-CN.md) | <img src="VolumeMeasure/assets/sample.png" alt="volumeMeasure" style="zoom:60%;" /> <br>测量纸箱的长、宽、高。 |
+| [三维体积测量算法](VolumeMeasure/README.zh-CN.md) | <img src="VolumeMeasure/assets/sample.png" alt="volumeMeasure" style="zoom:60%;" /> <br>测量纸箱的长、宽、高。 |
