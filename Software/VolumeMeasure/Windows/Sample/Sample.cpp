@@ -115,7 +115,7 @@ OPEN:
                                           isDone = false;
                                           break;
                                       default:
-                                          printf("The calibration has failed:%d.\n", calibrationState);
+                                          printf("Please use the ScepterGUITool to view the Depth image and check whether the depth data of the test plane has any missing or tilted areas.\n");
                                           isDone = true;
                                           break;
                                       }
