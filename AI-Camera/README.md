@@ -7,9 +7,7 @@ This directory contains the edge computing implementation of Vzense's core algor
 ### Supported Products
 
 - NYX Camera
-  - NYX650: Pending
-- Vzense Camera
-  - DS86: Pending
+  - NYX650:  (NYX650_R_20250331_B26.12and later )
 
 ### Software architecture
 
@@ -36,4 +34,6 @@ Developers can use ScepterGUITool for algorithm validation and performance bench
 
 ### Algorithm List
 
-To be released.
+| Name                                                  | Description                                                  |
+| ----------------------------------------------------- | ------------------------------------------------------------ |
+| [People Counting Algorithm](PeopleCounting/README.md) | <img src="assets/peoplecounting.gif" alt="volumeMeasure" style="zoom:60%;" /> <br>The algorithm achieves human detection and tracking while performing people counting based on predefined detection lines. |
