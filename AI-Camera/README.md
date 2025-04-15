@@ -7,7 +7,7 @@ This directory contains the edge computing implementation of Vzense's core algor
 ### Supported Products
 
 - NYX Camera
-  - NYX650:  (NYX650_R_20250331_B26.12and later )
+  - NYX650:  (NYX650_R_20250331_B26.12 and later )
 
 ### Software architecture
 

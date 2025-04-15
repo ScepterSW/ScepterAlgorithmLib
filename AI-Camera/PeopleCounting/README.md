@@ -7,7 +7,7 @@ This algorithm implements human detection and tracking. By setting the predefine
 ### Supported Products
 
 - NYX Camera
-  - NYX650 (NYX650_R_20241203_B26  and later )
+  - NYX650 (NYX650_R_20250331_B26.12  and later )
 
 ### Camera Installation Diagram
 

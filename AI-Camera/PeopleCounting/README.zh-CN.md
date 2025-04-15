@@ -37,7 +37,7 @@
 
 ### 使用ScepterUtool查看算法结果
 
-1. 启动软件[ScepterUtool]()，打开相机，并开流。
+1. 启动软件[ScepterUtool](https://sourceforge.net/projects/scepterguitool/files/TMP/)，打开相机，并开流。
 
    <img src="assets/scan_2.png" style="zoom:60%;" />
 
