@@ -1,3 +1,6 @@
+Ver25.4.1
+1.optimize the detection of irregular objects
+
 Ver25.2.2
 1.improve the stability of computations
 
