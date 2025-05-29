@@ -58,6 +58,73 @@ When the movement direction is opposite to InDirection, the OUT count increases 
 
    <img src="assets/sample.png" style="zoom:67%;" />
 
+### Algorithm Result Explanation and Parsing Code Example
+
+The algorithm result is a JSON-formatted string. Refer to the example below for the specific format.
+
+```json
+{
+  "mark": {
+    "label": [
+      {"origin": [124, 473], "text": "95002D"},
+      {"origin": [124, 498], "text": "1298"}    ],
+    "line": [
+      [337, 0, 337, 480],
+      [124, 448, 280, 448],
+      [280, 448, 280, 514],
+      [280, 514, 124, 514],
+      [124, 514, 124, 448] ],
+    "title": { "origin": [200, 25], "text": "in: 4 out: 3"}  },
+  "peopleInfo": [
+    {"height": 1298, "id": "95002D", "posInWorld": [600, 743, 1402]}  ],
+  "statistics": {"in": 4,"out": 3}
+}
+```
+
+
+The elements in the JSON string are described as follows:
+
+|  Element   | Describe                                                     |
+| :--------: | ------------------------------------------------------------ |
+|    mark    | For demonstrating algorithm detection performance using tools like ScepterUtool/PrecompiledSample. |
+| peopleInfo | For storing personnel information detected by the algorithm, including: identifier(id), height (height), and 3D coordinates (posInWorld). |
+| statistics | For storing algorithm-calculated personnel traffic statistics, including: incoming count (in) and outgoing count (out). |
+
+Parsing code example
+
+```c++
+struct PeopleInfo
+{
+    uint64_t id;
+    uint32_t height;
+    cv::Point3i posInWorld;
+};
+
+uint64_t hexStringToUInt64(const std::string& hexStr) {
+    return std::stoull(hexStr, nullptr, 16);
+}
+
+//Parse peopleInfo
+Json::Value peopleInfoJson = root["peopleInfo"];
+if (peopleInfoJson.size() > 0)
+{
+    vector<PeopleInfo> peopleInfoVec(peopleInfoJson.size());
+    for (auto i = 0; i < peopleInfoJson.size(); i++)
+    {
+        const Json::Value singleJson = peopleInfoJson[i];
+        peopleInfoVec[i].id = hexStringToUInt64(singleJson["id"].asString());
+        peopleInfoVec[i].height = singleJson["height"].asUInt();
+        const Json::Value& pos = singleJson["posInWorld"];
+        peopleInfoVec[i].posInWorld = cv::Point3i(pos[0].asInt(), pos[1].asInt(), pos[2].asInt());
+    }
+}
+
+//Parse statistics
+Json::Value statisticsJson = root["statistics"];
+uint32_t in_statistics = statisticsJson["in"].asUInt();
+uint32_t out_statistics = statisticsJson["out"].asUInt();
+```
+
 ### Algorithm Parameter Configuration
 
 Use ScepterUtool to modify the algorithm’s configuration parameters as shown below.
@@ -68,6 +135,7 @@ Use ScepterUtool to modify the algorithm’s configuration parameters as shown b
 | ---------------- | ------------------------------------------------------------ |
 | Camera_Height    | Set the height of the camera’s front cover from the ground (range: 1800–2900 mm). |
 | InDirection      | Set the entry direction (values: 0, 1, 2, 3). Refer to the diagram below for details.<br>![](assets/indirection.png) |
+| ResultType       | Set the algorithm reporting result types. The configurable values and their meanings are as follows:<br />1: peopleInfo<br />8: statistics<br />16: mark<br />Each value corresponds one-to-one with the element descriptions in the JSON string from the[Algorithm Result Explanation and Parsing Code Example] section.<br />The above values can be used in combination. |
 | Other Parameters | Not recommended for modification.                            |
 
 ### Algorithm Upgrade Method

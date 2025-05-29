@@ -65,6 +65,72 @@
 
    <img src="assets/sample.png" style="zoom:67%;" />
 
+### 算法结果说明及解析示例代码
+
+算法结果是JSON格式的字符串，具体格式可参考下面示例。
+```json
+{
+  "mark": {
+    "label": [
+      {"origin": [124, 473], "text": "95002D"},
+      {"origin": [124, 498], "text": "1298"}    ],
+    "line": [
+      [337, 0, 337, 480],
+      [124, 448, 280, 448],
+      [280, 448, 280, 514],
+      [280, 514, 124, 514],
+      [124, 514, 124, 448] ],
+    "title": { "origin": [200, 25], "text": "in: 4 out: 3"}  },
+  "peopleInfo": [
+    {"height": 1298, "id": "95002D", "posInWorld": [600, 743, 1402]}  ],
+  "statistics": {"in": 4,"out": 3}
+}
+```
+
+
+JSON字符串中的元素说明如下：
+
+|    元素    | 说明                                                         |
+| :--------: | ------------------------------------------------------------ |
+|    mark    | 用于ScepterUtool/PrecompiledSample等工具演示算法检测效果。   |
+| peopleInfo | 用于保存算法检测到人员信息：包括标识（id）、身高（height）、三维坐标（posInWorld）。 |
+| statistics | 用于保存算法统计到的人员进出数目：包括进入人数（in）、离开人数（out）。 |
+
+解析示例代码
+
+```c++
+struct PeopleInfo
+{
+    uint64_t id;
+    uint32_t height;
+    cv::Point3i posInWorld;
+};
+
+uint64_t hexStringToUInt64(const std::string& hexStr) {
+    return std::stoull(hexStr, nullptr, 16);
+}
+
+//解析 peopleInfo
+Json::Value peopleInfoJson = root["peopleInfo"];
+if (peopleInfoJson.size() > 0)
+{
+    vector<PeopleInfo> peopleInfoVec(peopleInfoJson.size());
+    for (auto i = 0; i < peopleInfoJson.size(); i++)
+    {
+        const Json::Value singleJson = peopleInfoJson[i];
+        peopleInfoVec[i].id = hexStringToUInt64(singleJson["id"].asString());
+        peopleInfoVec[i].height = singleJson["height"].asUInt();
+        const Json::Value& pos = singleJson["posInWorld"];
+        peopleInfoVec[i].posInWorld = cv::Point3i(pos[0].asInt(), pos[1].asInt(), pos[2].asInt());
+    }
+}
+
+//解析 statistics
+Json::Value statisticsJson = root["statistics"];
+uint32_t in_statistics = statisticsJson["in"].asUInt();
+uint32_t out_statistics = statisticsJson["out"].asUInt();
+```
+
 ### 算法参数配置
 
 使用ScepterUtool可以修改算法的配置参数，具体操作如下图。
@@ -75,6 +141,7 @@
 | ------------- | ------------------------------------------------------------ |
 | Camera_Height | 设置相机前盖板离地面的高度，取值范围1800~2900mm。            |
 | InDirection   | 设置进入方向，取值范围：0、1、2、3，具体含义可以参考下图。<br>![](assets/indirection.png) |
+| ResultType    | 设置算法上报结果类型，可配置数值及含义如下：<br />1: peopleInfo<br />8: statistics<br />16: mark<br />每个数值与【算法结果说明及解析示例代码】中JSON字符串中的元素说明一一对应。<br />上述不同数值可以联合使用。 |
 | 其它参数      | 不建议修改。                                                 |
 
 ### 算法升级方法
