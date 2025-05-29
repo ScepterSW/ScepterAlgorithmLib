@@ -91,10 +91,11 @@ typedef enum
     SC_GET_AI_RESULT_TIME_OUT               = -112,   //!< Capture the next AI result time out.
     SC_MORPH_AI_LIB_ERROR                   = -113,   //!< The morph AI library is not exist or initialized failed.
     SC_CPU_AFFINITY_CHECK_FAILED            = -114,   //!< The cpu affinity config file check failed
-    SC_ALG_UPGRADE_DOWNLOAD_FAILED          = -115,   //!< The morph AI package download failed.
-    SC_ALG_UPGRADE_CHECKSUM_FAILED          = -116,   //!< The morph AI package checksum check failed.
-    SC_ALG_UPGRADE_PACKAGE_VERSION_FAILED   = -117,   //!< The morph AI package version check failed.
+    SC_ALG_TRANSFER_FAILED                  = -115,   //!< The morph AI package transfer failed.
+    SC_ALG_TRANSFER_CHECKSUM_FAILED         = -116,   //!< The morph AI package checksum check failed.
+    SC_ALG_TRANSFER_PACKAGE_VERSION_FAILED  = -117,   //!< The morph AI package version check failed.
     SC_SN_NOT_MATCHED                       = -118,   //!< The sn number of opended device is not matched with input sn number.
+    SC_ALG_TRANSFER_FILE_NOT_EXIST          = -119,   //!< The morph AI package not exits.
     SC_DEVICE_OVERHEATED                    = 1,      //!< The device is overheated
 
     SC_MORPH_COMMAND_FAILED                 = -201,   //!< The command is executed failed.

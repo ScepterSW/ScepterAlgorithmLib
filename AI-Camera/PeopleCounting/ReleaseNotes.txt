@@ -1,2 +1,5 @@
+Ver25.5.1
+1.add statistics and peopleInfo in the algorithom result.
+
 Ver25.4.1
-1.Initial release
+1.Initial release.

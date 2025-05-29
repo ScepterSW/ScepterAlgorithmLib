@@ -4,7 +4,7 @@
     "colorSensor": [
         {
             "type": "gc2053",
-            "resolutionList": ["1600_1200","800_600", "640_480"]
+            "resolutionList": ["640_480"]
         }    ],
     "toFSensor": [
         {
