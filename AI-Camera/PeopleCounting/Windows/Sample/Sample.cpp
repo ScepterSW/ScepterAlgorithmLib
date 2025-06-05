@@ -276,7 +276,7 @@ void ShowAIResult(Mat img, const ScAIResult_& mAIResult)
     {
         return;
     }
-    printf("%s\n", jsonStr);
+    //printf("%s\n", jsonStr);
     Json::Value markJson = root["mark"];
     Json::Value titleJson = markJson["title"];
 
@@ -307,29 +307,29 @@ void ShowAIResult(Mat img, const ScAIResult_& mAIResult)
         cv::line(img, start, end, Scalar(255, 255, 255), 1);
     }
 
-    //parse peopleInfo
-    Json::Value peopleInfoJson = root["peopleInfo"];
-    if (peopleInfoJson.size() > 0)
-    {
-        vector<PeopleInfo> peopleInfoVec(peopleInfoJson.size());
-        for (auto i = 0; i < peopleInfoJson.size(); i++)
-        {
-            const Json::Value singleJson = peopleInfoJson[i];
-            peopleInfoVec[i].id = hexStringToUInt64(singleJson["id"].asString());
-            peopleInfoVec[i].height = singleJson["height"].asUInt();
-            const Json::Value& pos = singleJson["posInWorld"];
-            peopleInfoVec[i].posInWorld = cv::Point3i(pos[0].asInt(), pos[1].asInt(), pos[2].asInt());
-        }
+    ////parse peopleInfo
+    //Json::Value peopleInfoJson = root["peopleInfo"];
+    //if (peopleInfoJson.size() > 0)
+    //{
+    //    vector<PeopleInfo> peopleInfoVec(peopleInfoJson.size());
+    //    for (auto i = 0; i < peopleInfoJson.size(); i++)
+    //    {
+    //        const Json::Value singleJson = peopleInfoJson[i];
+    //        peopleInfoVec[i].id = hexStringToUInt64(singleJson["id"].asString());
+    //        peopleInfoVec[i].height = singleJson["height"].asUInt();
+    //        const Json::Value& pos = singleJson["posInWorld"];
+    //        peopleInfoVec[i].posInWorld = cv::Point3i(pos[0].asInt(), pos[1].asInt(), pos[2].asInt());
+    //    }
 
-        for (auto i = 0; i < peopleInfoVec.size(); i++)
-        {
-            printf("id:%X, height:%d, posInWorld:[%d, %d, %d]\n", peopleInfoVec[i].id, peopleInfoVec[i].height, peopleInfoVec[i].posInWorld.x, peopleInfoVec[i].posInWorld.y, peopleInfoVec[i].posInWorld.z);
-        }
-    }
+    //    for (auto i = 0; i < peopleInfoVec.size(); i++)
+    //    {
+    //        printf("id:%X, height:%d, posInWorld:[%d, %d, %d]\n", peopleInfoVec[i].id, peopleInfoVec[i].height, peopleInfoVec[i].posInWorld.x, peopleInfoVec[i].posInWorld.y, peopleInfoVec[i].posInWorld.z);
+    //    }
+    //}
 
-    //parse statistics
-    Json::Value statisticsJson = root["statistics"];
-    uint32_t in_statistics = statisticsJson["in"].asUInt();
-    uint32_t out_statistics = statisticsJson["out"].asUInt();
-    printf("in_statistics:%d, out_statistics:%d\n", in_statistics, out_statistics);
+    ////parse statistics
+    //Json::Value statisticsJson = root["statistics"];
+    //uint32_t in_statistics = statisticsJson["in"].asUInt();
+    //uint32_t out_statistics = statisticsJson["out"].asUInt();
+    //printf("in_statistics:%d, out_statistics:%d\n", in_statistics, out_statistics);
 }
