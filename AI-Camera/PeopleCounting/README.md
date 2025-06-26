@@ -143,9 +143,9 @@ Notes:
 The relationship between parameters InDirection, DetectionLine and DetectionLineThreshold is shown in the figure below.
 Only when a person crosses the In/Out Trigger Line and meets the counting conditions will the In/Out count be triggered.
 
-| ![indirection_0](assets\indirection_0.png) | ![indirection_0](assets\indirection_1.png) |
+| ![indirection_0](assets/indirection_0.png) | ![indirection_1](assets/indirection_1.png) |
 | ------------------------------------------ | ------------------------------------------ |
-| ![indirection_0](assets\indirection_2.png) | ![indirection_0](assets\indirection_3.png) |
+| ![indirection_2](assets/indirection_2.png) | ![indirection_3](assets/indirection_3.png) |
 ### Algorithm Upgrade Method
 
 1. Download the Algorithm

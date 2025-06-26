@@ -149,11 +149,9 @@ uint32_t out_statistics = statisticsJson["out"].asUInt();
 参数InDirection、DetectionLine、DetectionLineThreshold之间的关系参见下图。
 
 当人跨过In/Out Trigger Line，且满足计数条件时，In/Out才计数。
-
-| ![indirection_0](assets\indirection_0.png) | ![indirection_0](assets\indirection_1.png) |
+| ![indirection_0](assets/indirection_0.png) | ![indirection_1](assets/indirection_1.png) |
 | ------------------------------------------ | ------------------------------------------ |
-| ![indirection_0](assets\indirection_2.png) | ![indirection_0](assets\indirection_3.png) |
-
+| ![indirection_2](assets/indirection_2.png) | ![indirection_3](assets/indirection_3.png) |
 ### 算法升级方法
 
 1. **下载算法**
