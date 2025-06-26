@@ -29,8 +29,6 @@
 
 - 人体的移动轨迹跨越了检测线；
 
-- 人体走出相机视野；
-
 当人体移动方向与InDirection一致时，IN计数加1；
 
 当人体移动方向与InDirection相反时，OUT计数加1；
@@ -137,12 +135,24 @@ uint32_t out_statistics = statisticsJson["out"].asUInt();
 
 <img src="assets/alg_params.png" style="zoom:80%;" />
 
-| 参数项        | 说明                                                         |
-| ------------- | ------------------------------------------------------------ |
-| Camera_Height | 设置相机前盖板离地面的高度，取值范围1800~2900mm。            |
-| InDirection   | 设置进入方向，取值范围：0、1、2、3，具体含义可以参考下图。<br>![](assets/indirection.png) |
-| ResultType    | 设置算法上报结果类型，可配置数值及含义如下：<br />1: peopleInfo<br />8: statistics<br />16: mark<br />每个数值与【算法结果说明及解析示例代码】中JSON字符串中的元素说明一一对应。<br />上述不同数值可以联合使用。 |
-| 其它参数      | 不建议修改。                                                 |
+| 参数项                 | 说明                                                         |
+| ---------------------- | ------------------------------------------------------------ |
+| Camera_Height          | 设置相机前盖板离地面的高度，取值范围1800~2900mm。            |
+| InDirection            | 设置进入方向，取值范围：0、1、2、3，具体含义可以参考下图。<br>![](assets/indirection.png) |
+| DetectionLine          | 设置检测线位置，详细参见备注。                               |
+| DetectionLineThreshold | 设置检测线阈值，详细参见备注。                               |
+| ResultType             | 设置算法上报结果类型，可配置数值及含义如下：<br />1: peopleInfo<br />8: statistics<br />16: mark<br />每个数值与【算法结果说明及解析示例代码】中JSON字符串中的元素说明一一对应。<br />上述不同数值可以联合使用。 |
+| 其它参数               | 不建议修改。                                                 |
+
+备注：
+
+参数InDirection、DetectionLine、DetectionLineThreshold之间的关系参见下图。
+
+当人跨过In/Out Trigger Line，且满足计数条件时，In/Out才计数。
+
+| ![indirection_0](assets\indirection_0.png) | ![indirection_0](assets\indirection_1.png) |
+| ------------------------------------------ | ------------------------------------------ |
+| ![indirection_0](assets\indirection_2.png) | ![indirection_0](assets\indirection_3.png) |
 
 ### 算法升级方法
 

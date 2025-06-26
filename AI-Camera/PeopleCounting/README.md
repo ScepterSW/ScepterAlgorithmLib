@@ -25,7 +25,6 @@ A person is counted only if the following conditions are met:
 
 - The person is detected by the algorithm.
 - The person’s movement trajectory crosses the detection line.
-- The person exits the camera’s field of view.
 
 When the movement direction matches the InDirection, the IN count increases by 1.
 When the movement direction is opposite to InDirection, the OUT count increases by 1.
@@ -131,13 +130,22 @@ Use ScepterUtool to modify the algorithm’s configuration parameters as shown b
 
 <img src="assets/alg_params.png" style="zoom:80%;" />
 
-| Parameter        | Description                                                  |
-| ---------------- | ------------------------------------------------------------ |
-| Camera_Height    | Set the height of the camera’s front cover from the ground (range: 1800–2900 mm). |
-| InDirection      | Set the entry direction (values: 0, 1, 2, 3). Refer to the diagram below for details.<br>![](assets/indirection.png) |
-| ResultType       | Set the algorithm reporting result types. The configurable values and their meanings are as follows:<br />1: peopleInfo<br />8: statistics<br />16: mark<br />Each value corresponds one-to-one with the element descriptions in the JSON string from the[Algorithm Result Explanation and Parsing Code Example] section.<br />The above values can be used in combination. |
-| Other Parameters | Not recommended for modification.                            |
+| Parameter              | Description                                                  |
+| ---------------------- | ------------------------------------------------------------ |
+| Camera_Height          | Set the height of the camera’s front cover from the ground (range: 1800–2900 mm). |
+| InDirection            | Set the entry direction (values: 0, 1, 2, 3). Refer to the diagram below for details.<br>![](assets/indirection.png) |
+| DetectionLine          | Set the detection line position. For details, refer to the notes. |
+| DetectionLineThreshold | Set the detection line threshold. For details, refer to the notes. |
+| ResultType             | Set the algorithm reporting result types. The configurable values and their meanings are as follows:<br />1: peopleInfo<br />8: statistics<br />16: mark<br />Each value corresponds one-to-one with the element descriptions in the JSON string from the[Algorithm Result Explanation and Parsing Code Example] section.<br />The above values can be used in combination. |
+| Other Parameters       | Not recommended for modification.                            |
 
+Notes:
+The relationship between parameters InDirection, DetectionLine and DetectionLineThreshold is shown in the figure below.
+Only when a person crosses the In/Out Trigger Line and meets the counting conditions will the In/Out count be triggered.
+
+| ![indirection_0](assets\indirection_0.png) | ![indirection_0](assets\indirection_1.png) |
+| ------------------------------------------ | ------------------------------------------ |
+| ![indirection_0](assets\indirection_2.png) | ![indirection_0](assets\indirection_3.png) |
 ### Algorithm Upgrade Method
 
 1. Download the Algorithm
