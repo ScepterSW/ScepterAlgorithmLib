@@ -21,7 +21,7 @@ Environmental Configuration Requirements:
 | Height(mm) |             15             |             24             |             52             |             59             |             65             |             70             |
 |   Image    | ![Box_1](assets/Box_1.png) | ![Box_2](assets/Box_2.png) | ![Box_3](assets/Box_3.png) | ![Box_4](assets/Box_4.png) | ![Box_5](assets/Box_5.png) | ![Box_6](assets/Box_6.png) |
 
-Note: Sorted by box height from smallest to largest.
+Note: Sorted by box height from smallest to largest; The camera mounting height is 1040 mm.
 
 ### Measurement results
 

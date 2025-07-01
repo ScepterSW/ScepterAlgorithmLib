@@ -83,7 +83,7 @@ The algorithm result is a JSON-formatted string. Refer to the example below for 
 
 The elements in the JSON string are described as follows:
 
-|  Element   | Describe                                                     |
+|  Element   | Description                                                  |
 | :--------: | ------------------------------------------------------------ |
 |    mark    | For demonstrating algorithm detection performance using tools like ScepterUtool/PrecompiledSample. |
 | peopleInfo | For storing personnel information detected by the algorithm, including: identifier(id), height (height), and 3D coordinates (posInWorld). |
