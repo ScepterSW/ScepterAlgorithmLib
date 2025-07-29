@@ -156,7 +156,7 @@ uint32_t out_statistics = statisticsJson["out"].asUInt();
 
 1. **下载算法**
 
-   下载地址： https://github.com/ScepterSW/ScepterAlgorithmLib/AI-Camera/PeopleCounting/AI_Module
+   下载地址： https://github.com/ScepterSW/ScepterAlgorithmLib/tree/main/AI-Camera/PeopleCounting/AI_Module
 
 2. **算法升级**
 

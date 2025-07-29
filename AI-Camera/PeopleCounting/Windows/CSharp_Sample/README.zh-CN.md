@@ -22,7 +22,7 @@
 
 3. 运行Bin/x64/Sample.exe，显示如下图。
 
-  ![CSharp](..\..\assets\CSharp.png)
+  ![CSharp](../../assets/CSharp.png)
 
   
 

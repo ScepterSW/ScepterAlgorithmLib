@@ -22,5 +22,5 @@ This peoplecounting demo program implemented in C# based on [ScepterSDK](https:/
 
 3. Run **Bin/x64/Sample.exe**, and the interface will be displayed as shown below.
 
-   ![CSharp](..\..\assets\CSharp.png)
+   ![CSharp](../../assets/CSharp.png)
 

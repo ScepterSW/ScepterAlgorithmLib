@@ -150,7 +150,7 @@ Only when a person crosses the In/Out Trigger Line and meets the counting condit
 
 1. Download the Algorithm
 
-   Download link: https://github.com/ScepterSW/ScepterAlgorithmLib/AI-Camera/PeopleCounting/AI_Module.
+   Download link: https://github.com/ScepterSW/ScepterAlgorithmLib/tree/main/AI-Camera/PeopleCounting/AI_Module.
 
 2. Upgrade the Algorithm
 
